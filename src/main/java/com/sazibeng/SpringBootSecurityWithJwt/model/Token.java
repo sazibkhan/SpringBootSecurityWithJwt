@@ -17,12 +17,12 @@ public class Token {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private  String name;
+    private  String token;
     @Column(name = "is_log_out")
     private Boolean isLogout;
 
     @ManyToOne
-    @Column(name = "user_id")
+    @JoinColumn(name = "user_id")
     private  User user;
 
 
