@@ -12,9 +12,13 @@ import java.util.Optional;
 @Repository
 public interface ITokenRepository extends JpaRepository<Token, Long> {
 
+ 
     Optional<Token> findByToken(String token);
 
-    @Query("select  t from Token t inner join User u on t.user.id=u,id where t.user.id=:userId and t.isLogout=false")
+    // @Query("select t from Token t inner join User u on t.user.id=u,id where
+    // t.user.id=:userId and t.isLogout=false")
+    // List<Token> findTokenByUser(String userId);
+    @Query("select t from Token t inner join User u on t.user.id = u.id where t.user.id = :userId and t.isLogout = false")
     List<Token> findTokenByUser(String userId);
 
 
